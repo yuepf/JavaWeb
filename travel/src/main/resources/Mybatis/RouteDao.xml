@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.travel.dao.RouteDao">
+    <!--根据cid查询总记录数-->
+    <select id="findTotalCount" resultType="java.lang.Integer">
+        select count(*) from tab_route
+        <where>
+            <if test="cid!=0">
+                and cid=#{cid}
+            </if>
+            <if test="rname !=null and rname.length()>0 and !'null'.equals(rname)">
+                and rname like '%${rname}%'
+            </if>
+        </where>
+    </select>
+
+    <!--根据cid,start,pageSize查询当前页的数据集合-->
+    <select id="findByPage" resultType="cn.itcast.travel.domain.Route">
+
+    </select>
+</mapper>
